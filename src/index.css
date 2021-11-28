@@ -1,35 +1,23 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center; 
-    padding: 3em;
     font: 20px Helvetica, sans-serif;
-    color: #333; 
+    color: rgb(48, 35, 56); 
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-h1 { 
-    font-size: 50px; 
-}
-
-.container { 
-    display: block;
-    text-align: left;
+.container {     
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: auto;
     margin: 0 auto;
+    background: rgb(217, 205, 241);
 }
 
 .board {
   box-sizing: border-box;
+  margin: 1em auto;
   width: 9em;
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -38,7 +26,7 @@ h1 {
   grid-gap: 0;
 }
 .box {
-  box-shadow: 0 0 0 1px red;
+  box-shadow: 0 0 0 3px rgb(161, 141, 200);
   margin: auto;
   display: flex;
   width: 3em;
@@ -46,7 +34,7 @@ h1 {
   font-size: 2rem;
   align-items: center;
   justify-content: center;
-  background: rgb(231, 229, 229);
+  background: rgb(217, 205, 241);
   cursor: pointer;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -54,8 +42,17 @@ h1 {
   user-select: none;
 }
 .status {
-  margin-bottom: 0.5em;
+    margin: 0.5em 0 0;
 }
 button {
-  margin-top: 0.5em;
+    margin: 0.5em auto;
+    cursor: pointer;
+    background: rgb(48, 35, 56);
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color:rgb(229, 236, 250);
+    padding: 0.4em 0.9em;
+    border-radius: 0.2em;
 }
