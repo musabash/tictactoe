@@ -5,6 +5,10 @@ body {
     color: rgb(48, 35, 56); 
 }
 
+h1 {
+    margin: 0.5em;
+}
+
 .container {     
     padding: 48px;
     display: flex;
@@ -17,11 +21,12 @@ body {
 
 .board {
     box-sizing: border-box;
-    margin: 1em auto;
+    margin: 0.5em auto;
     width: 9em;
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-areas: "status status status";
     justify-content: center;
     grid-gap: 0;
 }
@@ -34,11 +39,11 @@ button {
 
 .box {
     box-shadow: 0 0 0 3px rgb(161, 141, 200);
-    margin: auto;
     display: flex;
-    width: 3em;
-    height: 3em;
-    font-size: 2rem;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0;
+    font-size: 2.5rem;
     align-items: center;
     justify-content: center;
     background: rgb(217, 205, 241);
@@ -49,9 +54,10 @@ button {
     user-select: none;
 }
 .status {
-    margin: 0.5em 0 0;
+    margin: 0.5em 0;
+    text-align: left;
+    grid-area: status;
 }
-
 
 .resetBtn {
     margin: 0.5em auto;
