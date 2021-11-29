@@ -1,4 +1,4 @@
-import Box from './components/box' 
+import Box from './box' 
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
                 <Box />
                 <Box />
             </div>
-            <button>Reset</button>
+            <button className="resetBtn">Reset</button>
         </div>
     );
 }

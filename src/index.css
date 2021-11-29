@@ -16,40 +16,46 @@ body {
 }
 
 .board {
-  box-sizing: border-box;
-  margin: 1em auto;
-  width: 9em;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(auto-fit, 1fr);
-  justify-content: center;
-  grid-gap: 0;
+    box-sizing: border-box;
+    margin: 1em auto;
+    width: 9em;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    justify-content: center;
+    grid-gap: 0;
 }
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
 .box {
-  box-shadow: 0 0 0 3px rgb(161, 141, 200);
-  margin: auto;
-  display: flex;
-  width: 3em;
-  height: 3em;
-  font-size: 2rem;
-  align-items: center;
-  justify-content: center;
-  background: rgb(217, 205, 241);
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    box-shadow: 0 0 0 3px rgb(161, 141, 200);
+    margin: auto;
+    display: flex;
+    width: 3em;
+    height: 3em;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    background: rgb(217, 205, 241);
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .status {
     margin: 0.5em 0 0;
 }
-button {
+
+
+.resetBtn {
     margin: 0.5em auto;
-    cursor: pointer;
     background: rgb(48, 35, 56);
-    outline: none;
-    border: none;
     font-size: 1.2rem;
     font-weight: 700;
     color:rgb(229, 236, 250);
