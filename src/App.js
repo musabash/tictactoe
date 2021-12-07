@@ -1,66 +1,61 @@
-import { useState, useEffect, useMemo } from 'react';
-import './index.css';
+import { useState, useEffect } from 'react';
 import Box from './box';
 
 function App() {
-  const [contents, setContents] = useState({9: "", 14: "", 7: "", 8: "", 10: "", 12: "", 13: "", 6: "", 11: "" });
-  const [moves, setMoves] = useState({O: [], X: []});
-  const [nextPlayer, setNextPlayer] = useState("X");
-  const [status, setStatus] = useState(`Next Player: ${nextPlayer}`);
-  const [isGameEnded, setIsGameEnded] = useState(false)
-  const boxIdArr = [9, 14, 7, 8, 10, 12, 13, 6, 11]
-  
-//   const totalMoves = useMemo(() => {
-//         [...moves["X"], ...moves["O"]].length
-//   }, [nextPlayer])
-  
-  useEffect(() => {
-    !isGameEnded && setStatus(`Next Player: ${nextPlayer}`);
-    !isGameEnded && [...moves["X"], ...moves["O"]].length === 9 && setStatus("Tie")
-  }, [nextPlayer])
-  
-  const checkWinningMove = (moves, lastMove) => {
-    moves.forEach(move => {
-      let winningMove = 30 - lastMove - move;
-      if (moves.includes(winningMove) && move !== winningMove) {
-        setStatus(`Winner: ${nextPlayer}`)
-        setIsGameEnded(true)
-      }
-    })
-  }
-  const resetBoard = () => {
-    setMoves({O: [], X: []})
-    setIsGameEnded(false)
-    setNextPlayer("X")
-    setContents({9: "", 14: "", 7: "", 8: "", 10: "", 12: "", 13: "", 6: "", 11: "" })
-  }
+    const [moves, setMoves] = useState(Array(9).fill(""));
+    const [nextPlayer, setNextPlayer] = useState("X");
+    const [status, setStatus] = useState(`Next Player: ${nextPlayer}`);
+    const [isWin, setIsWin] = useState(false)
+    const boxValueArr = [4, 9, 2, 3, 5, 7, 8, 1, 6]
 
-  const handleClick = (e) => {
-    if (!isGameEnded) {
-      let lastMove = parseInt(e.target.value);
-      checkWinningMove(moves[nextPlayer], lastMove);
-      setMoves(prev => ({...prev, [nextPlayer]: [...prev[nextPlayer], lastMove]}))
-      setContents(prev => ({...prev, [lastMove]: nextPlayer}))
-      setNextPlayer(prev => prev === "X" ? "O" : "X");
+    useEffect(() => {
+        !isWin && setStatus(`Next Player: ${nextPlayer}`);
+        !isWin && !moves.includes("") && setStatus("Tie")
+    }, [nextPlayer])
+
+    const checkWinningMove = (lastMove) => {
+        const values = boxValueArr.filter((_, i) => moves[i] === nextPlayer)
+        values.forEach(value => {
+            let winningMove = 15 - value - lastMove;
+            if (values.includes(winningMove) && winningMove !== value) {
+                setStatus(`Winner: ${nextPlayer}`)
+                setIsWin(true)
+            }
+        })
     }
-  }
+
+    const resetBoard = () => {
+        setMoves(Array(9).fill(""))
+        setIsWin(false)
+        setNextPlayer("X")
+    }
+
+    const handleClick = (e) => {
+        if (!isWin && moves.includes("")) {
+            let index = parseInt(e.target.value);
+            let lastMove = boxValueArr[index];
+            checkWinningMove(lastMove);
+            setMoves(prev => prev.map((e, i) => i === index ? nextPlayer : e))
+            setNextPlayer(prev => prev === "X" ? "O" : "X");
+        }
+    }
 
     return (
         <div className="container">
             <h1>Tic Tac Toe</h1>
             <div className="board">
                 <h3 className="status">{status}</h3>
-                {boxIdArr.map(elm => 
+                {boxValueArr.map((elm, i) => 
                     <Box
-                    key={elm}
-                    value={elm}
-                    handleClick={handleClick}
-                    content={contents[elm]}
+                        key={elm}
+                        value={i}
+                        handleClick={!moves[i] ? handleClick : undefined}
+                        content={moves[i]}
                     />
                 )}
             </div>
             <button className="resetBtn" onClick={resetBoard}>Reset</button>
         </div>
     )
-}
+    }
 export default App

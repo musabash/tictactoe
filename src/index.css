@@ -53,18 +53,34 @@ button {
     -ms-user-select: none;
     user-select: none;
 }
+
+.box:focus {
+    background: rgb(203, 176, 253);
+}
 .status {
     margin: 0.5em 0;
     text-align: left;
     grid-area: status;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
 .resetBtn {
     margin: 0.5em auto;
-    background: rgb(48, 35, 56);
+    width: 7.5em;
+    background: rgb(78, 56, 92);
     font-size: 1.2rem;
     font-weight: 700;
     color:rgb(229, 236, 250);
     padding: 0.4em 0.9em;
     border-radius: 0.2em;
+}
+
+.resetBtn:hover {
+    background: rgb(110, 0, 179);
+    color: rgb(243, 224, 255);
+    box-shadow: 0 0 15px 2px whitesmoke;
+    text-shadow: 0 0 1px whitesmoke;
 }

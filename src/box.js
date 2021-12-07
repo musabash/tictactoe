@@ -1,8 +1,8 @@
-export default function Box({value, handleClick, content}) {
+export default function Box({value, handleClick, content}) {    
 
   return <button
             className="box"
-            onClick={!content ? handleClick : undefined}
+            onClick={handleClick}
             value={value}
          >
             {content}
