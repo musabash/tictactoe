@@ -26,8 +26,9 @@ function App() {
 
     const resetBoard = () => {
         setMoves(Array(9).fill(""))
-        setIsWin(false)
         setNextPlayer("X")
+        setStatus('Next Player: X')
+        setIsWin(false)
     }
 
     const handleClick = (e) => {
